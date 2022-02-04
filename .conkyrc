@@ -1,0 +1,142 @@
+conky.config = { 
+
+	background = true,
+	use_xft = true,
+	font = 'monospace:size=8',
+	xftalpha = 0.8,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'normal',
+	own_window_class = 'conky',
+	own_window_argb_visual = true,
+     --	own_window_colour = '#263041',
+     --	own_window_argb_value = 120,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 1,
+	border_width = 1,
+	default_color = 'white',
+	default_shade_color = 'gray',
+	default_outline_color = 'black',
+	alignment = 'top_right',
+	gap_x = -1920,
+	gap_y = 0,
+-- Misc Console #
+        out_to_console = false,
+        out_to_stderr = false,
+        extra_newline = false,
+
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+	use_spacer = 'right',
+	maximum_width = 400,
+        minimum_height = 1200,
+	uppercase = false,
+
+
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${alignr}${font DejaVu Sans Mono:size=14} Arch Linux ${font}${voffset 0} 
+${alignr}${offset 12} └───────────  ${sysname}${voffset -0}   
+#${alignr}  │  
+${alignr}${offset -12}${nodename} ─┤
+#${alignr}${offset 6}│    │   
+${alignr}${offset -6} < ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-25} > cpu type ─┤    │ 
+${alignr} < ${kernel} > kernel ─┤    │  
+${alignr} < ${machine} > arch ─┤    │  
+${alignr} < ${uptime} > uptime ─┘    │  
+#${alignr}  │  
+${alignr}${offset -12}system ─┤${voffset 0}
+#${alignr}│    │  
+${alignr}  cpu ─┤    │  
+${alignr}  used ─┤    │    │  
+${alignr}${offset -6} < ${cpu cpu0}% > cpu0 ─┤    │    │    │ 
+${alignr}${offset -6} < ${cpu cpu1}% > cpu1 ─┤    │    │    │ 
+${alignr}${offset -6} < ${cpu cpu2}% > cpu2 ─┤    │    │    │ 
+${alignr}${offset -12} < ${cpu cpu3}% > cpu3 ─┘    │    │    │${voffset 0}
+#${alignr}│    │    │  
+${alignr} freq ─┤    │    │  
+${alignr}  < ${freq 0}mhz > cpu0 ─┤    │    │    │  
+${alignr}  < ${freq 1}mhz > cpu1 ─┤    │    │    │  
+${alignr}${offset -6}  < ${freq 2}mhz > cpu2 ─┤    │    │    │ 
+${alignr}  < ${freq 3}mhz > cpu3 ─┘    │    │    │  
+${alignr}${offset -6}│    │    │ ${voffset -8}
+${alignr} < $loadavg > load ─┤    │    │  
+${alignr} < ${top name 1} ${top cpu 1} > ─┤    │    │  
+${alignr} < ${top name 2} ${top cpu 2} > ─┤    │    │  
+${alignr} < ${top name 3} ${top cpu 3} > ─┤    │    │  
+${alignr} < ${top name 4} ${top cpu 4} > ─┤    │    │  
+${alignr}${offset -12}< ${top name 5} ${top cpu 5} > ─┘    │    │
+${alignr}${offset -12}│    │${voffset -8}
+${alignr} processes ─┤    │  
+${alignr} < $processes >   total ─┤    │    │  
+${alignr}${offset -12}< $running_processes > running ─┘    │    │
+${alignr}${offset -12}│    │${voffset -8}
+${alignr}${offset -12}temperatures ─┤    │
+${alignr}${offset -6}cpu ─┤    │    │ 
+${alignr}${offset -12}< ${execi 5 sensors|grep 'Package id 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C > CPU0 ─┤    │    │    │
+${alignr}${offset -12}< ${execi 5 sensors|grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C > CPU1 ─┤    │    │    │
+${alignr}${offset -12}< ${execi 5 sensors|grep 'Core 1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C > CPU2 ─┘    │    │    │
+${alignr}${offset -12}│    │    │${voffset -8}
+${alignr}${offset -12}gpu ─┘    │    │
+${alignr}${offset -12}< ${execi 5 sensors|grep 'edge'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C > GPU0  ─┘         │    │
+#${alignr}${offset 6}│    │${voffset -8}   
+${alignr} ram ─┤    │  
+${alignr} < $memperc% > used ─┤    │    │  
+${alignr} < $mem/$memmax > ─┘    │    │    │  
+${alignr} < ${top name 1} ${top mem 1} > ─┤    │    │  
+${alignr} < ${top name 2} ${top mem 2} > ─┤    │    │  
+${alignr} < ${top name 3} ${top mem 3} > ─┤    │    │  
+${alignr} < ${top name 4} ${top mem 4} > ─┤    │    │  
+${alignr}${offset -12}< ${top name 5} ${top mem 5} > ─┘    │    │
+${alignr}${offset -12}│    │
+${alignr} disk usage ─┘    │  
+${alignr}< $diskio_read >  read ─┤         │  
+${alignr}${offset -6}< $diskio_write > write ─┤         │ 
+${alignr}< ${fs_used /home}/${fs_size /home} > /home ─┤         │  
+${alignr}< ${fs_bar 5,120 /home} > ─┘     │         │  
+${alignr}< ${fs_used /media/Windows}/${fs_size /media/Windows} > /Windows ─┤         │  
+${alignr}< ${fs_bar 5,120 /media/Windows} > ─┘     │         │  
+${alignr}< ${fs_used /media/Backup}/${fs_size /media/Backup} > /Backup ─┤         │  
+${alignr}< ${fs_bar 5,120 /media/Backup} > ─┘     │         │  
+${alignr}< ${fs_used /}/${fs_size /} > /root ─┘         │  
+${alignr}${offset -12}< ${fs_bar 5,120 /} > ─┘               │
+#${alignr}│  
+${alignr}${offset -6}  network ─┘ 
+${alignr}< ${execi 60 wget -O - -q icanhazip.com} > wan ─┤       ${voffset -13}
+${if_existing /proc/net/route wlp2s0}
+${alignr}< ${addr wlp2s0} > lan ─┤       ${voffset -13}
+${else}${if_existing /proc/net/route enp1s0}
+${alignr}< ${addr enp1s0} > lan ─┤       ${voffset -13}
+${else}
+${alignr}< Network disconnected > lan ─┤       ${voffset -13}
+${endif}${endif}  
+${alignr}< ${tcp_portmon 1 65535 count} > connections ─┤       
+${alignr}${offset -42}< ${tcp_portmon 1 32767 count} > in / locale ─┤
+${alignr} < ${tcp_portmon 1 32767 rhost 0} ${tcp_portmon 1 32767 lservice 0} > ─┤    │       
+${alignr} < ${tcp_portmon 1 32767 rhost 1} ${tcp_portmon 1 32767 lservice 1} > ─┤    │       
+${alignr} < ${tcp_portmon 1 32767 rhost 2} ${tcp_portmon 1 32767 lservice 2} > ─┘    │       
+${alignr}${offset -6}< ${tcp_portmon 32768 61000 count} > out / locale ─┤      
+${alignr}$font < ${tcp_portmon 32768 61000 rhost 0} ${alignr} ${tcp_portmon 32768 61000 rservice 0} > ─┤    │       
+${alignr}$font < ${tcp_portmon 32768 61000 rhost 1} ${alignr} ${tcp_portmon 32768 61000 rservice 1} > ─┤    │       
+${alignr}$font < ${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 32768 61000 rservice 2} > ─┘    │       
+${alignr}${offset -42}< ${upspeed wlp2s0} kb/s >   up ─┤
+#${alignr}${offset -10}│   │     
+${alignr}${offset -42} < ${upspeedgraph wlp2s0 12,165 BA0B0B FC0707} > ─┘   │
+#${alignr}│${voffset 0}       
+${alignr}${offset -42}< ${downspeed wlp2s0} kb/s > down ─┘
+#${alignr}${offset -2}│           
+${alignr}${offset -68}< ${downspeedgraph wlp2s0 12,165 136311 11B014} > ─┘
+
+    
+]];
