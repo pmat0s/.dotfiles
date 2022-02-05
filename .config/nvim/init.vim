@@ -6,7 +6,20 @@ Plug 'Yggdroot/indentLine'			" Linhas de identação
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
+Plug 'preservim/tagbar'
+Plug 'tpope/vim-surround'
+
+Plug 'lervag/vimtex'
+    let g:tex_flavor='latex'
+    let g:vimtex_view_method='zathura'
+    let g:vimtex_quickfix_mode=0
+    set conceallevel=1
+    let g:tex_conceal='abdmg'
 call plug#end()
+
+
 
 colorscheme onedark
 set t_Co=256
@@ -29,7 +42,7 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled =1
 let g:airline_powerline_fonts=1
 let g:airline_statusline_ontop=0
-let g:aitline_theme='base16_twilight'
+let g:airline_theme='minimalist'
 
 " Busca
 set smartcase
@@ -62,9 +75,11 @@ map <leader>ce :vsplit ~/.config/nvim/init.vim<cr>
 map <leader>cs :source ~/.config/nvim/init.vim<cr>
 map <F5> <ESC>:w<CR>:!clear; python %<CR>
 
+nnoremap <leader>p "+p
+nnoremap qq :q<cr>
 
 let g:indentline_showFirstIndentLevel = 1
-let g:indentline_fileType = ['html', 'py', 'cpp', 'c']
+let g:indentline_fileType = ['html', 'py', 'cpp', 'c', 'tex']
 let g:indentline_fileTypeExclude = ["text", "help", "undotree", "diff", "coc-explorer"]
 let g:indentline_bufTypeExclude = ["help", "terminal"]
 let g:indentLine_char = '|'
