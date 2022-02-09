@@ -107,12 +107,37 @@ source $ZSH/oh-my-zsh.sh
  alias zshconfig="vim ~/.zshrc"
  alias ohmyzsh="vim ~/.oh-my-zsh"
  alias sinonimo="web_search sinonimo"
-setxkbmap -model abnt2 -layout br -variant abnt2
-setxkbmap -option ctrl:nocaps
-
 
 ZSH_WEB_SEARCH_ENGINES=(sinonimo "https://www.sinonimos.com.br/")
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-alias dotfiles=/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME
+
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias vim="nvim"
+alias pacs="sudo pacman -S"
+alias pacman="sudo pacman"
+
+bindkey '^ ' autosuggest-accept
+
+if command -v theme.sh > /dev/null; then
+	[ -e ~/.theme_history ] && theme.sh "$(theme.sh -l|tail -n1)"
+
+	# Optional
+
+	# Bind C-o to the last theme.
+	last_theme() {
+		theme.sh "$(theme.sh -l|tail -n2|head -n1)"
+	}
+
+	zle -N last_theme
+	bindkey '^O' last_theme
+
+	alias th='theme.sh -i'
+
+	# Interactively load a light theme
+	alias thl='theme.sh --light -i'
+
+	# Interactively load a dark theme
+	alias thd='theme.sh --dark -i'
+fi

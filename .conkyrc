@@ -107,8 +107,8 @@ ${alignr}< ${fs_used /home}/${fs_size /home} > /home ─┤         │
 ${alignr}< ${fs_bar 5,120 /home} > ─┘     │         │  
 ${alignr}< ${fs_used /media/Windows}/${fs_size /media/Windows} > /Windows ─┤         │  
 ${alignr}< ${fs_bar 5,120 /media/Windows} > ─┘     │         │  
-${alignr}< ${fs_used /media/Backup}/${fs_size /media/Backup} > /Backup ─┤         │  
-${alignr}< ${fs_bar 5,120 /media/Backup} > ─┘     │         │  
+#${alignr}< ${fs_used /media/Backup}/${fs_size /media/Backup} > /Backup ─┤         │  
+#${alignr}< ${fs_bar 5,120 /media/Backup} > ─┘     │         │  
 ${alignr}< ${fs_used /}/${fs_size /} > /root ─┘         │  
 ${alignr}${offset -12}< ${fs_bar 5,120 /} > ─┘               │
 #${alignr}│  
